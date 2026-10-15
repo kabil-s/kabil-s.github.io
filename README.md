@@ -1,4 +1,4 @@
-# Kabilan S — Developer Portfolio
+# Kabilan S — Software Developer Portfolio
 
 A simple, responsive portfolio built with HTML, CSS, and JavaScript.
 
