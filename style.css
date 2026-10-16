@@ -522,3 +522,64 @@ footer .copyright {
   .theme-toggle { order: 2; margin-left: auto; margin-right: 4px; }
   .menu-toggle { order: 3; }
 }
+
+
+/* ===== Experience paragraphs ===== */
+.timeline-content p + p { margin-top: 10px; }
+
+/* ===== Skills: 5 cards in one row on desktop ===== */
+@media (min-width: 901px) {
+  .skills-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* ===== Divider line between sections (Contact already has its own) ===== */
+main > .section:not(#home):not(#contact)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 1px;
+  background: var(--border);
+}
+/* sections that are themselves the container */
+main > .section.container:not(#home):not(#contact)::before { left: 0; width: 100%; }
+/* full-width sections: line matches the container width */
+.skills-section::before, .experience-section::before, .achievements-section::before {
+  left: 50%; transform: translateX(-50%); width: min(1040px, calc(100% - 48px));
+}
+@media (max-width: 680px) {
+  .skills-section::before, .experience-section::before, .achievements-section::before {
+    width: min(100% - 36px, 520px);
+  }
+}
+
+
+/* ===== Light theme: more visible cards ===== */
+:root:not([data-theme="dark"]) {
+  --bg: #f1f4f9;
+  --border: #d5dce8;
+}
+:root:not([data-theme="dark"]) .site-header { background: rgba(241,244,249,.94); }
+:root:not([data-theme="dark"]) .skill-card,
+:root:not([data-theme="dark"]) .project-card,
+:root:not([data-theme="dark"]) .timeline-content,
+:root:not([data-theme="dark"]) .contact-item {
+  background: #fff;
+  border-color: var(--border);
+  box-shadow: 0 1px 2px rgba(16,24,40,.06), 0 8px 22px rgba(16,24,40,.07);
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+:root:not([data-theme="dark"]) .skill-card:hover,
+:root:not([data-theme="dark"]) .project-card:hover,
+:root:not([data-theme="dark"]) .timeline-content:hover,
+:root:not([data-theme="dark"]) .contact-item:hover {
+  border-color: var(--blue);
+  box-shadow: 0 2px 4px rgba(16,24,40,.06), 0 14px 30px rgba(49,95,206,.16);
+  transform: translateY(-2px);
+}
+/* blue accent bar on experience / achievements cards and project cards */
+:root:not([data-theme="dark"]) .timeline-content { border-left: 4px solid var(--blue); }
+:root:not([data-theme="dark"]) .project-card { border-top: 3px solid var(--blue); }
+@media (max-width: 680px) {
+  .nav-links { background: #f1f4f9; }
+  :root[data-theme="dark"] .nav-links { background: rgba(13,17,23,.99); }
+}
